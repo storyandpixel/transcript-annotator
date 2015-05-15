@@ -10,7 +10,9 @@ FrameRate = 24
 def remove_leading_zeroes_from_timestamp(timestamp)
   [/^00:0/,
    /^00:/,
-   /^0/].each { |r| return timestamp.sub(r, '') }
+   /^0/].each do |r|
+     return timestamp.sub(r, '') if r.match(timestamp)
+   end
 end
 
 def seconds_to_timestamp(seconds)
