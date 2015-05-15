@@ -25,7 +25,7 @@ all_containing = containing.curry.(:find_all)
 
 project = Nokogiri::XML(File.read(ARGV[1]))
 
-sequence = first_containing.(project.css('sequence'), 'name', ARGV[2])
+sequence = project.css('sequence')
 
 golden_clips = all_containing.(sequence.css('media video track').first.css('clipitem'),
                                'labels label2',
