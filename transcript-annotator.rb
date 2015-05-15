@@ -5,6 +5,8 @@ require 'pry'
 
 FrameRate = 24
 
+# Usage: transcript-annotator.rb "Jake Lodwick" "jake lodwick app story 1.0.xml" 
+
 def remove_leading_zeroes_from_timestamp(timestamp)
   [/^00:0/,
    /^00:/,
