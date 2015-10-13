@@ -114,6 +114,14 @@ if quote_headers.length != quote_bodies.length
 end
 
 zipped = zip_quote_headers_and_bodies(quote_headers, quote_bodies)
-puts zipped.
+final_output = zipped.
   map { |quote| split_long_quotes(quote, MaxQuoteLength) }.
   join("\n\n\n\n================================================================\n\n\n\n")
+
+if ENV['TRANSCRIPT_ANNOTATOR_EXPORT_FOLDER']
+  File.open(File.join(ENV['TRANSCRIPT_ANNOTATOR_EXPORT_FOLDER'], File.basename(MarkdownPath)), 'w+') do |file|
+    file << final_output
+  end
+end
+
+puts final_output
